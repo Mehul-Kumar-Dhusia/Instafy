@@ -1,0 +1,116 @@
+.post{
+    padding: 10px;
+    padding-bottom: 0px;
+    width: 90%;
+    margin: auto;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    border: 2px solid rgb(234, 234, 234);
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.postWrapper{
+    position: relative;
+}
+.circularProgress{
+    text-align: center;
+    position: absolute;
+    left: 45%;
+    top: 40%;
+}
+.postBody{
+    visibility: hidden;
+}
+.postTop{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.postTopLeft{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    cursor: pointer;
+}
+.postProfileImg{
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    object-fit: cover;
+}
+.postUsername{
+    font-size: 15px;
+    font-weight: 500;
+}
+.postTime{
+    font-size: 12px;
+}
+.postTopRight{
+    cursor: pointer;
+    margin-right: 5px;
+}
+.postTopRightIcon:hover{
+    color: red;
+}
+.postCenter{
+    margin: 10px;
+}
+.postText{
+    margin-bottom: 20px;
+}
+.postImg{
+    width: 100%;
+}
+.postReactionStatus{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 13px;
+    margin-top: 5px;
+    padding: 0px 5px;
+    color: rgb(91, 90, 90);
+    font-weight: 500;
+    cursor: pointer;
+}
+.postBottom{
+    width: 97%;
+    margin: auto;
+}
+.postBottomWrapper{
+    display: flex;
+    align-items: center;
+    padding: 5px 0px;
+    border-top: 0.4px solid rgb(220, 220, 220);
+    justify-content: space-between;
+}
+.postReaction{
+    cursor: pointer;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    justify-content: center;
+    color: rgb(60, 60, 60);
+}
+.commentIcon{
+    margin-top: 2px;
+}
+.sendIcon{
+    rotate: -30deg;
+    margin-bottom: 5px;
+}
+.postReaction span{
+    font-size: 16px;
+    font-weight: 500;
+}
+.postReaction:hover{
+    color: rgb(110, 110, 110);
+}
+.like-red{
+    background-color: red;
+}
+
+
+/* .postReaction span:hover{
+    background-color: rgb(243, 243, 243);
+    border-radius: 10px;
+} */

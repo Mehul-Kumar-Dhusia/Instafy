@@ -1,0 +1,11 @@
+.main-section{
+    flex: 2;
+    background-color: #ffffff ;
+    overflow: scroll;
+}
+.main-section-wrapper{
+    padding-top: 30px;
+}
+.postContainer{
+    margin-top: 30px;
+}
