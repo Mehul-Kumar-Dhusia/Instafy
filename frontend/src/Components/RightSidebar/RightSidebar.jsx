@@ -4,7 +4,9 @@ import OnlineFriend from './OnlineFriend'
 import { LightMode } from '@mui/icons-material'
 import { AuthContext } from '../../Context/AuthContext'
 import { useNavigate } from 'react-router-dom'
+
 const RightSidebar = () => {
+  
   const {currentUser,setProfileUserId} = useContext(AuthContext)
   const [friends , setFriends] = useState([])
   const Navigate = useNavigate()

@@ -50,6 +50,7 @@ router.delete('/:id' , async (req , res) => {
     }
 })
 
+// To get all the post of a single User
 router.get('/profile/:id' , async (req , res) => {
     try{
         const postData = await Post.find({userId : req.params.id})
@@ -71,6 +72,30 @@ router.put('/:id/like' , async (req , res) => {
             await post.updateOne({$pull : {likes : req.body.userId }})
             res.status(200).json("DisLiked")
         }
+        
+    }catch(err){
+        res.status(500).json(err)
+    }
+})
+
+
+// Comment
+router.put('/:id/comment' , async (req , res) => {
+    try{ 
+        const post = await Post.findById(req.params.id)
+        await post.updateOne({$push : {comments : req.body}})
+        res.status(200).json("Commented")
+        
+    }catch(err){
+        res.status(500).json(err)
+    }
+})
+
+router.put('/:id/deleteComment' , async (req , res) => {
+    try{ 
+        const post = await Post.findById(req.params.id)
+        await post.updateOne({$pull : {comments : req.body}})
+        res.status(200).json("Comment deleted successfully")
         
     }catch(err){
         res.status(500).json(err)

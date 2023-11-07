@@ -9,16 +9,18 @@ import {
 import { AuthContext } from "../../Context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+
 const CreatePost = () => {
   const { currentUser, setProfileUserId } = useContext(AuthContext);
 
   const [text, setText] = useState("");
   const [file , setFile] = useState(null)
+
   const navigate = useNavigate();
 
-  useEffect(()=> {
-    console.log(file)
-  },[file])
+  // useEffect(()=> {
+  //   console.log(file)
+  // },[file])
 
   const profileClickHandler = async () => {
     setProfileUserId(currentUser._id);
