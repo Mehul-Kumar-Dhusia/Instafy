@@ -56,7 +56,7 @@ const Post = ({ item }) => {
       }
     };
     fetchUser();
-  }, [item.userId, currentUser._id, item.img, item.likes]);
+  }, []);
 
   return (
     <div className="post">

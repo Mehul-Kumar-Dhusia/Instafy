@@ -6,7 +6,7 @@ import axios from "axios";
 import { AuthContext } from "../../Context/AuthContext";
 
 const UserProfile = () => {
-  const { profileUserId, currentUser } = useContext(AuthContext);
+  const { profileUserId, currentUser, friends, setFriends } = useContext(AuthContext);
   const [profileUserData, setProfileUserData] = useState({});
   const [profileUserPostData, setProfileUserPostData] = useState([]);
 
@@ -32,12 +32,21 @@ const UserProfile = () => {
       }
     };
     fetchProfileUser();
-  }, [profileUserPostData,profileUserData,currentUser._id,profileUserId]);
+  }, []);
 
   const followHandler = async () => {
-    setIsFollow(!isFollow)
+    setIsFollow(true)
+    setFollowerLength(followerLength + 1) ;
+    const updateFriends = [...friends , profileUserId] ;
+    setFriends(updateFriends) ;
     const response = await axios.put('/user/' + profileUserId + '/follow' , {userId : currentUser._id})
-    console.log(response.data)
+  }
+
+  const UnFollowHandler = async () => {
+    setIsFollow(false) ;
+    setFollowerLength(followerLength - 1) ;
+    setFriends(friends.filter(id => id != profileUserId)) ;
+    const response = await axios.put('/user/' + profileUserId + '/unfollow' , {userId : currentUser._id})
   }
 
   return (
@@ -74,7 +83,7 @@ const UserProfile = () => {
               </p>
               {currentUser._id !== profileUserId &&
                 (isFollow ? (
-                  <div onClick={followHandler} className="user-profile-follow-button followed-button">
+                  <div onClick={UnFollowHandler} className="user-profile-follow-button followed-button">
                     Following
                   </div>
                 ) : (

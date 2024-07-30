@@ -6,6 +6,7 @@ export const AuthContext = createContext();
 export const AuthContextProvider = ({ children }) => {
   const [profileUserId , setProfileUserId] = useState("") 
   const [currentUser , setCurrentUser] = useState({})
+  const [friends , setFriends] = useState([])
 
   return (
     <AuthContext.Provider
@@ -13,7 +14,9 @@ export const AuthContextProvider = ({ children }) => {
         profileUserId,
         setProfileUserId,
         currentUser,
-        setCurrentUser
+        setCurrentUser,
+        friends,
+        setFriends
       }}
     >
       {children}

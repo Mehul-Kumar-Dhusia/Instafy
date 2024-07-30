@@ -41,7 +41,7 @@ app.post('/api/upload', upload.single('file'), (req, res) => {
 
 mongoose.connect(process.env.MONGO_URL)
 .then(() => {
-    app.listen(process.env.PORT , () => {
+    app.listen(process.env.PORT || 3000 , () => {
         console.log("Server is running at port : 3000 and database is connected");
     })
 })

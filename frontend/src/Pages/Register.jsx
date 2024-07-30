@@ -4,7 +4,7 @@ import { AuthContext } from "../Context/AuthContext";
 import {Link, useNavigate} from 'react-router-dom'
 
 const Register = () => {
-  const { setCurrentUser } = useContext(AuthContext);
+  const { setCurrentUser , setFriends } = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
@@ -21,6 +21,8 @@ const Register = () => {
       }
       const response = await axios.post('/auth/register' , newUser)
       setCurrentUser(response.data)
+      window.localStorage.setItem('user', JSON.stringify(response.data)) 
+      setFriends([])
       navigate('/')
 
     }catch(err){

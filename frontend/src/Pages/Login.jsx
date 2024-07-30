@@ -19,6 +19,7 @@ const Login = () => {
       }
       const response = await axios.post('/auth/login' , loginUser)
       setCurrentUser(response.data)
+      window.localStorage.setItem("user", JSON.stringify(response.data))
       navigate('/')
     }catch(err){
       setError(err.response.data)
