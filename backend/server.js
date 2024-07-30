@@ -12,10 +12,15 @@ const postRoute = require("./routes/post")
 const app = express()
 
 // MiddleWare
-app.use(cors({
-  origin: 'https://instafy-frontend.onrender.com',
-  credentials: true
-}));
+const corsOptions = {
+  origin: [
+    'https://instafy-frontend.onrender.com', 
+    'http://localhost:3000'                   
+  ],
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
 
 app.use(express.json())
 app.use("/api/user" ,userRoute)
@@ -45,7 +50,7 @@ app.post('/api/upload', upload.single('file'), (req, res) => {
 
 mongoose.connect(process.env.MONGO_URL)
 .then(() => {
-    app.listen(process.env.PORT || 3000 , () => {
+    app.listen(process.env.PORT , () => {
         console.log("Server is running at port : 3000 and database is connected");
     })
 })
