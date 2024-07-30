@@ -12,7 +12,11 @@ const postRoute = require("./routes/post")
 const app = express()
 
 // MiddleWare
-app.use(cors());
+app.use(cors({
+  origin: 'https://instafy-frontend.onrender.com',
+  credentials: true
+}));
+
 app.use(express.json())
 app.use("/api/user" ,userRoute)
 app.use('/api/auth' , authRoute)
