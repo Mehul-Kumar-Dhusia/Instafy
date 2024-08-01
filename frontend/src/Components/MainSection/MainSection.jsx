@@ -9,7 +9,7 @@ const MainSection = () => {
   const [postData , setPostData] = useState([])
   useEffect(()=>{
     const fetchPost = async () => {
-      const response = await axios.get("/post/")
+      const response = await axios.get(process.env.REACT_APP_URL+'/post/')
       setPostData(response.data.sort((p1,p2)=>{
         return new Date(p2.createdAt) - new Date(p1.createdAt)
       }))

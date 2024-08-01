@@ -17,7 +17,7 @@ const Login = () => {
         email : email ,
         password : password
       }
-      const response = await axios.post('/auth/login' , loginUser)
+      const response = await axios.post(process.env.REACT_APP_URL+'/auth/login' , loginUser)
       setCurrentUser(response.data)
       window.localStorage.setItem("user", JSON.stringify(response.data))
       navigate('/')

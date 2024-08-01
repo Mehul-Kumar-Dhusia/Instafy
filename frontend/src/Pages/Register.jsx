@@ -10,7 +10,6 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [error , setError] = useState("")
   const navigate = useNavigate()
-
   const createUser = async (e) => {
     e.preventDefault()
     try{
@@ -19,7 +18,7 @@ const Register = () => {
         email : email ,
         password : password
       }
-      const response = await axios.post('/auth/register' , newUser)
+      const response = await axios.post(process.env.REACT_APP_URL + '/auth/register' , newUser)
       setCurrentUser(response.data)
       window.localStorage.setItem('user', JSON.stringify(response.data)) 
       setFriends([])

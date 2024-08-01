@@ -16,8 +16,8 @@ const UserProfile = () => {
 
   useEffect(() => {
     const fetchProfileUser = async () => {
-      const response = await axios.get("/user/" + profileUserId);
-      const postResponse = await axios.get("/post/profile/" + profileUserId);
+      const response = await axios.get(process.env.REACT_APP_URL + "/user/" + profileUserId);
+      const postResponse = await axios.get(process.env.REACT_APP_URL + "/post/profile/" + profileUserId);
       setProfileUserPostData(postResponse.data.sort((p1,p2)=>{
         return new Date(p2.createdAt) - new Date(p1.createdAt)
       }));
@@ -39,14 +39,14 @@ const UserProfile = () => {
     setFollowerLength(followerLength + 1) ;
     const updateFriends = [...friends , profileUserId] ;
     setFriends(updateFriends) ;
-    const response = await axios.put('/user/' + profileUserId + '/follow' , {userId : currentUser._id})
+    const response = await axios.put(process.env.REACT_APP_URL + '/user/' + profileUserId + '/follow' , {userId : currentUser._id})
   }
 
   const UnFollowHandler = async () => {
     setIsFollow(false) ;
     setFollowerLength(followerLength - 1) ;
     setFriends(friends.filter(id => id != profileUserId)) ;
-    const response = await axios.put('/user/' + profileUserId + '/unfollow' , {userId : currentUser._id})
+    const response = await axios.put(process.env.REACT_APP_URL + '/user/' + profileUserId + '/unfollow' , {userId : currentUser._id})
   }
 
   return (

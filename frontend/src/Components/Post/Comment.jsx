@@ -20,7 +20,7 @@ const Comment = ({item}) => {
   const createCommentHandler = async (e) => {
     e.preventDefault() ;
     try{
-      const response = await axios.put("/post/" + item._id + "/comment", {
+      const response = await axios.put(process.env.REACT_APP_URL + "/post/" + item._id + "/comment", {
         text : text,
         id : currentUser._id,
         username : currentUser.username,

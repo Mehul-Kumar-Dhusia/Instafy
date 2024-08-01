@@ -40,13 +40,13 @@ const CreatePost = () => {
         data.append('name' , file.name)
         newPost.img = file.name
         try{
-          const response = await axios.post('/upload' , data)
+          const response = await axios.post(process.env.REACT_APP_URL + '/upload' , data)
           console.log(response.data)
         }catch(err){
           console.log(err)
         }
       }
-      await axios.post("/post/", newPost);
+      await axios.post(process.env.REACT_APP_URL + "/post/", newPost);
       setFile(null)
       setText("");
     } catch (err) {

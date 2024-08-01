@@ -20,7 +20,8 @@ const Post = ({ item }) => {
   const { setProfileUserId, currentUser } = useContext(AuthContext);
   const [commentBox , setCommentBox] = useState(false) ;
 
-  const PF = "http://localhost:3000/images/";
+  // const PF = "http://localhost:3000/images/";
+  const PF = "http://instafy-backend.onrender.com/images/";
   const [user, setUser] = useState({});
   const [like, setLike] = useState(item.likes.length);
   const [isLike, setIsLike] = useState(false);
@@ -32,7 +33,7 @@ const Post = ({ item }) => {
   const likeChangeHandler = async () => {
     setLike(isLike ? like - 1 : like + 1);
     setIsLike(!isLike);
-    const response = await axios.put("/post/" + item._id + "/like", {
+    const response = await axios.put(process.env.REACT_APP_URL + "/post/" + item._id + "/like", {
       userId: currentUser._id,
     });
     console.log(response);
@@ -40,14 +41,14 @@ const Post = ({ item }) => {
 
   const deletePostHandler = async () => {
     setIsDelete(!isDelete);
-    const url = "/post/" + item._id;
+    const url = process.env.REACT_APP_URL + "/post/" + item._id;
     const response = await axios.delete(url, { userId: currentUser._id });
     console.log(response.data);
   };
 
   useEffect(() => {
     const fetchUser = async () => {
-      const url = "/user/" + item.userId;
+      const url = process.env.REACT_APP_URL + "/user/" + item.userId;
       const response = await axios.get(url);
       setUser(response.data);
       // console.log(PF + item.img);

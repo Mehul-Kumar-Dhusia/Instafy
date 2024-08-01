@@ -15,7 +15,7 @@ const SingleComment = ({ val , item}) => {
   }
   const deleteHandler = async () => {
     try{
-      const response = await axios.put("/post/" + item._id + "/deleteComment", {
+      const response = await axios.put(process.env.REACT_APP_URL + "/post/" + item._id + "/deleteComment", {
         text : val.text,
         id : currentUser._id,
         username : currentUser.username,
